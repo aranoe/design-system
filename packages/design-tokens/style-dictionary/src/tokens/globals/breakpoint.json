@@ -1,0 +1,16 @@
+{
+  "breakpoint": {
+    "mobile": {
+      "value": "0"
+    },
+    "tablet": {
+      "value": "768"
+    },
+    "desktop": {
+      "value": "960"
+    },
+    "desktop-large": {
+      "value": "1280"
+    }
+  }
+}

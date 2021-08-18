@@ -1,0 +1,19 @@
+{
+  "form": {
+    "main": {
+      "color": {
+        "value": "{color.primary.value}"
+      },
+      "hover": {
+        "color": {
+          "value": "{color.primary-light.value}"
+        }
+      },
+      "pressed": {
+        "color": {
+          "value": "{color.primary-dark.value}"
+        }
+      }
+    }
+  }
+}

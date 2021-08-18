@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "storybook-html": "yarn workspace @design-system/storybook-html storybook",
+    "style-dictionary": "yarn workspace @design-system/style-dictionary build"
+  },
+  "workspaces": [
+    "packages/**"
+  ]
+}

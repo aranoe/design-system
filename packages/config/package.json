@@ -1,0 +1,12 @@
+{
+  "name": "@design-system/config",
+  "version": "1.0.0",
+  "description": "global configuration for the design system",
+  "main": "src/config.ts",
+  "author": "Ömer Aran",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "tsconfig-paths": "^3.10.1"
+  }
+}

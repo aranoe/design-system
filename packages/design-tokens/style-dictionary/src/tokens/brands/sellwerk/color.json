@@ -1,0 +1,13 @@
+{
+  "color": {
+    "primary": {
+      "value": "{color.teal.500.value}"
+    },
+    "primary-light": {
+      "value": "{color.teal.300.value}"
+    },
+    "primary-dark": {
+      "value": "{color.teal.600.value}"
+    }
+  }
+}
