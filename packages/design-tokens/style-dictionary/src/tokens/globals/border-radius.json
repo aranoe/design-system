@@ -1,5 +1,9 @@
 {
   "border-radius": {
-    "full": { "value": "999px" }
+    "8": {
+      "value": "8",
+      "unit": "px"
+    },
+    "full": { "value": "999", "unit": "px" }
   }
 }

@@ -1,11 +1,11 @@
-import { PLATFORM } from "@/config/constants/platforms";
-import { registerGlobalConfig } from "@/config/extensions/register";
-import { getConfig } from "@/config/getConfig";
-import { getFileNames } from "@/helper/getFileNames";
-import { BrandOption } from "@/types/BrandOption";
-import { PlatformOption } from "@/types/PlatformOption";
-import { DESIGN_SYSTEM_CONFIG } from "@design-system/config";
-import StyleDictionary from "style-dictionary";
+import { PLATFORM } from '@/config/constants/platforms';
+import { registerGlobalConfig } from '@/config/extensions/register';
+import { getConfig } from '@/config/getConfig';
+import { getFileNames } from '@/helper/getFileNames';
+import { BrandOption } from '@/types/BrandOption';
+import { PlatformOption } from '@/types/PlatformOption';
+import { DESIGN_SYSTEM_CONFIG } from '@design-system/config';
+import StyleDictionary from 'style-dictionary';
 
 /**
  * The setup is inspired by Adobe, Amazon, Atlassian, Cosmos & DTCG
@@ -20,9 +20,6 @@ const prefix = DESIGN_SYSTEM_CONFIG.PREFIX;
 const platforms: PlatformOption[] = ["web"];
 const brands: BrandOption[] = ["sellwerk"];
 
-const components = getFileNames("src/tokens/platforms/**/components/**/*.json");
-const categories = getFileNames("src/tokens/globals/*.json");
-
 const build = async () => {
   // register all global style dictionary configurations
   registerGlobalConfig();
@@ -32,6 +29,11 @@ const build = async () => {
     brands.map(function (brand) {
       console.log("\n==============================================");
       console.log(`\nProcessing: [${platform}] [${brand}]`);
+
+      const components = getFileNames(
+        `src/tokens/${platform}/components/**/*.json`
+      );
+      const categories = getFileNames("src/tokens/globals/*.json");
 
       const config = getConfig({
         brand,
@@ -53,14 +55,17 @@ const build = async () => {
         // generates all tokens in tokens.scss
         dictionary.buildPlatform(PLATFORM.WEB_SCSS);
 
-        // generates file for each category in css & scss: color, spacing, etc..
+        // generates file for each category in css & scss: color, spacing, etc...
         dictionary.buildPlatform(PLATFORM.WEB_CSS_SCSS_CATEGORIES);
 
-        // generates file for each component in scss: button, input, etc..
+        // generates file for each component in scss: button, input, etc...
         dictionary.buildPlatform(PLATFORM.WEB_CSS_SCSS_COMPONENTS);
 
-        // generate file with media query mixins for each breakpoint in scss: mobile, tablet, desktop..
+        // generate file with media query mixins for each breakpoint in scss: mobile, tablet, desktop, etc ...
         dictionary.buildPlatform(PLATFORM.WEB_MEDIA_QUERY_MIXINS);
+
+        // generate file with utility classes for spacing, typograph, etc...
+        dictionary.buildPlatform(PLATFORM.WEB_UTILITIES);
       } else if (platform === "ios") {
         // maybe in future
       } else if (platform === "android") {

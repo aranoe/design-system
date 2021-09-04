@@ -1,14 +1,13 @@
-import { platforms } from "@/config/extensions/platforms";
-import { ConfigParams } from "@/types/Config";
-import { Config } from "style-dictionary";
+import { platforms } from '@/config/extensions/platforms';
+import { ConfigParams } from '@/types/Config';
+import { Config } from 'style-dictionary';
 
 export const getConfig = (config: ConfigParams): Config => {
   return {
     source: [
-      `src/tokens/brands/${config.brand}/*.json`,
-      `src/tokens/alias/**/*.json`,
+      `src/tokens/alias/${config.brand}/*.json`,
       `src/tokens/globals/**/*.json`,
-      `src/tokens/platforms/${config.platform}/**/*.json`,
+      `src/tokens/components/${config.platform}/**/*.json`,
     ],
     platforms: {
       ...platforms.web.cssScssCategories(config),
@@ -19,6 +18,7 @@ export const getConfig = (config: ConfigParams): Config => {
       ...platforms.web.json(config),
       ...platforms.web.styleguide(config),
       ...platforms.web.mediaQueryMixins(config),
+      ...platforms.web.utilities(config),
     } as any, // TODO: Define type, StyleDictionary doesn't provide types for all use cases
   };
 };

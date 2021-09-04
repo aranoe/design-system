@@ -1,4 +1,4 @@
-import { Matcher } from "style-dictionary/types/Matcher";
+import { Matcher } from 'style-dictionary/types/Matcher';
 
 export const filter = {
   category: (_category: string): Matcher => {
@@ -9,6 +9,11 @@ export const filter = {
   component: (_component: string): Matcher => {
     return (token) => {
       return token.path[0] === _component;
+    };
+  },
+  notComponent: (): Matcher => {
+    return (token) => {
+      return !token.filePath.includes("components");
     };
   },
   breakpoint: (): Matcher => {

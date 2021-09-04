@@ -1,3 +1,3 @@
 export const DESIGN_SYSTEM_CONFIG = {
-  PREFIX: "oxo",
+  PREFIX: "werk",
 };

@@ -1,38 +1,26 @@
-// https://amzn.github.io/style-dictionary/#/api?id=registertransformgroup
-import StyleDictionary from "style-dictionary";
+import StyleDictionary from 'style-dictionary';
 
+// https://amzn.github.io/style-dictionary/#/api?id=registertransformgroup
 export const registerTransformGroups = () => {
   StyleDictionary.registerTransformGroup({
     name: "styleguide",
-    transforms: ["attribute/cti", "name/cti/kebab", "size/px", "color/css"],
+    transforms: ["attribute/gac", "name/gac/kebab", "value/unit"],
   });
 
   StyleDictionary.registerTransformGroup({
     name: "tokens-js",
-    transforms: [
-      "name/cti/constant",
-      "name/component/constant",
-      "size/px",
-      "color/hex",
-    ],
+    transforms: ["attribute/gac", "name/gac/constant", "value/unit"],
   });
 
   StyleDictionary.registerTransformGroup({
     name: "tokens-json",
-    transforms: ["attribute/cti", "name/cti/kebab", "size/px", "color/css"],
+    transforms: ["attribute/gac", "name/gac/kebab", "value/unit"],
   });
 
   StyleDictionary.registerTransformGroup({
     name: "tokens-scss",
     // to see the pre-defined "scss" transformation use: console.log(StyleDictionary.transformGroup['scss']);
-    transforms: [
-      "name/cti/kebab",
-      "name/component/kebab",
-      "value/px",
-      "time/seconds",
-      "size/px",
-      "color/css",
-    ],
+    transforms: ["attribute/gac", "name/gac/kebab", "value/unit"],
   });
 };
 

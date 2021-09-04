@@ -1,0 +1,5 @@
+{
+  "navigation-bar": {
+    "height": { "value": "{size.full.value}" }
+  }
+}

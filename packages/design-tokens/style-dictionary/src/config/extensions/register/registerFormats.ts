@@ -1,7 +1,8 @@
-import { formatComponentStyles } from "@/config/helper/web/format/formatComponentStyles";
-import { formatMediaQueryMixins } from "@/config/helper/web/format/formatMediaQueryMixins";
-import { ComponentStylesOptions } from "@/types/format/ComponentFormat";
-import StyleDictionary, { format } from "style-dictionary";
+import { formatComponentStyles } from '@/config/helper/web/format/formatComponentStyles';
+import { formatMediaQueryMixins } from '@/config/helper/web/format/formatMediaQueryMixins';
+import { formatUtilityClasses } from '@/config/helper/web/format/formatUtilityClasses';
+import { ComponentStylesOptions } from '@/types/format/ComponentFormat';
+import StyleDictionary, { format } from 'style-dictionary';
 
 const {
   fileHeader,
@@ -51,6 +52,13 @@ export const registerFormats = () => {
     name: "scss/media-query-mixins",
     formatter: function ({ dictionary }) {
       return formatMediaQueryMixins(dictionary);
+    },
+  });
+
+  StyleDictionary.registerFormat({
+    name: "scss/utilities",
+    formatter: function ({ dictionary }) {
+      return formatUtilityClasses(dictionary);
     },
   });
 };

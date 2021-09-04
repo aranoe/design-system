@@ -1,13 +1,28 @@
-import { PLATFORM } from "@/config/constants/platforms";
-import { fileHeader } from "@/config/extensions/fileHeader";
-import { filter } from "@/config/extensions/filter";
-import { PlatformConfig } from "@/types/Config";
-import { Platform } from "style-dictionary/types/Platform";
+import { PLATFORM } from '@/config/constants/platforms';
+import { fileHeader } from '@/config/extensions/fileHeader';
+import { filter } from '@/config/extensions/filter';
+import { PlatformConfig } from '@/types/Config';
+import { Platform } from 'style-dictionary/types/Platform';
 
 const variableFormat = "scss"; // "css" | "scss"
-const outputReferences = true;
+const outputReferences = true; // if true uses reference of other token instead of raw value
 
 export const web: PlatformConfig = {
+  utilities: ({ brand, prefix }) => {
+    return {
+      [PLATFORM.WEB_UTILITIES]: {
+        transformGroup: "tokens-scss",
+        buildPath: `dist/web/${brand}/`,
+        files: [
+          {
+            destination: "utilities/utilities.scss",
+            format: "scss/utilities",
+          },
+        ],
+        prefix,
+      },
+    };
+  },
   mediaQueryMixins: ({ brand, prefix }) => {
     return {
       [PLATFORM.WEB_MEDIA_QUERY_MIXINS]: {
@@ -101,10 +116,12 @@ export const web: PlatformConfig = {
       [PLATFORM.WEB_JS]: {
         transformGroup: "tokens-js",
         buildPath: `dist/web/${brand}/`,
+
         files: [
           {
             destination: "tokens.esm.js",
             format: "javascript/es6",
+            filter: filter.notComponent(),
           },
         ],
         prefix,
@@ -148,6 +165,7 @@ export const web: PlatformConfig = {
   },
 
   scss: ({ brand, prefix }) => {
+    console.log("brand");
     return {
       [PLATFORM.WEB_SCSS]: {
         transformGroup: "tokens-scss",
@@ -156,12 +174,14 @@ export const web: PlatformConfig = {
           {
             destination: "tokens.scss",
             format: "scss/variables",
+            filter: filter.notComponent(),
             options: {
               outputReferences,
             },
           },
           {
-            destination: "tokens-css.scss",
+            destination: "tokens-css-variables.scss",
+            filter: filter.notComponent(),
             format: "css/variables",
             options: {
               outputReferences,

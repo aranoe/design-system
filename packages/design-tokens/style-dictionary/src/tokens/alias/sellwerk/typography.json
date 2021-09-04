@@ -1,0 +1,91 @@
+{
+  "typography": {
+    "overline": {
+      "font-size": { "value": "{font-size.14.value}" },
+      "text-color": { "value": "{color.primary.value}" },
+      "line-height": { "value": "20", "unit": "px" }
+    },
+    "hero": {
+      "font-size": { "value": "{font-size.32.value}" },
+      "text-color": { "value": "{color.grey-darker.value}" },
+      "line-height": { "value": "39", "unit": "px" }
+    },
+    "subtitle-hero": {
+      "font-size": { "value": "{font-size.22.value}" },
+      "text-color": { "value": "{color.grey-dark.value}" },
+      "line-height": { "value": "26", "unit": "px" }
+    },
+    "h1": {
+      "font-size": { "value": "{font-size.24.value}" },
+      "text-color": { "value": "{color.primary.value}" },
+      "line-height": { "value": "29", "unit": "px" }
+    },
+    "subtitle-h1": {
+      "font-size": { "value": "{font-size.18.value}" },
+      "text-color": { "value": "{color.grey-dark.value}" },
+      "line-height": { "value": "22", "unit": "px" }
+    },
+    "h2": {
+      "font-size": { "value": "{font-size.20.value}" },
+      "text-color": { "value": "{color.grey-darker.value}" },
+      "line-height": { "value": "24", "unit": "px" }
+    },
+    "h3": {
+      "font-size": { "value": "{font-size.16.value}" },
+      "text-color": { "value": "{color.grey-darker.value}" },
+      "line-height": { "value": "22", "unit": "px" }
+    },
+    "subtitle-h2-h3": {
+      "font-size": { "value": "{font-size.16.value}" },
+      "text-color": { "value": "{color.grey-darker.value}" },
+      "line-height": { "value": "22", "unit": "px" }
+    },
+    "body-text": {
+      "font-size": { "value": "{font-size.16.value}" },
+      "text-color": { "value": "{color.grey-darker.value}" },
+      "line-height": { "value": "22", "unit": "px" }
+    },
+    "body-text-underline": {
+      "font-size": { "value": "{font-size.16.value}" },
+      "text-color": { "value": "{color.grey-darker.value}" },
+      "line-height": { "value": "20", "unit": "px" },
+      "text-decoration": { "value": "underline" }
+    },
+    "caption": {
+      "font-size": { "value": "{font-size.14.value}" },
+      "text-color": { "value": "{color.grey-darker.value}" },
+      "line-height": { "value": "20", "unit": "px" }
+    },
+    "caption-italic": {
+      "font-size": { "value": "{font-size.14.value}" },
+      "text-color": { "value": "{color.grey-darker.value}" },
+      "line-height": { "value": "20", "unit": "px" },
+      "font-style": { "value": "italic" }
+    },
+    "caption-small": {
+      "font-size": { "value": "{font-size.12.value}" },
+      "text-color": { "value": "{color.grey-darker.value}" },
+      "line-height": { "value": "18", "unit": "px" }
+    },
+    "prime": {
+      "font-size": { "value": "{font-size.12.value}" },
+      "text-color": { "value": "{color.prime-gold.value}" },
+      "line-height": { "value": "18", "unit": "px" }
+    },
+    "caption-label": {
+      "font-size": { "value": "{font-size.12.value}" },
+      "text-color": { "value": "{color.grey-dark.value}" },
+      "line-height": { "value": "18", "unit": "px" },
+      "font-style": { "value": "italic" }
+    },
+    "breakpoint": {
+      "desktop": {
+        "hero": {
+          "font-size": { "value": "{font-size.32.value}" },
+          "text-color": { "value": "{color.grey-darker.value}" },
+          "line-height": { "value": "39", "unit": "px" }
+        }
+      }
+    }
+  }
+}

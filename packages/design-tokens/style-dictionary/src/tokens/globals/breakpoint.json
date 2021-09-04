@@ -1,16 +1,20 @@
 {
   "breakpoint": {
     "mobile": {
-      "value": "0"
+      "value": "0",
+      "unit": "px"
     },
     "tablet": {
-      "value": "768"
+      "value": "768",
+      "unit": "px"
     },
     "desktop": {
-      "value": "960"
+      "value": "1152",
+      "unit": "px"
     },
     "desktop-large": {
-      "value": "1280"
+      "value": "1440",
+      "unit": "px"
     }
   }
 }

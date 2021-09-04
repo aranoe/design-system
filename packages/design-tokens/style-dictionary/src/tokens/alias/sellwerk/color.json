@@ -1,0 +1,77 @@
+{
+  "color": {
+    "primary": {
+      "value": "#00AF9C",
+      "unit": "hex",
+      "comment": "SDE green Main"
+    },
+    "primary-bright": {
+      "value": "#00CCB1",
+      "unit": "hex"
+    },
+    "primary-brighter": {
+      "value": "#00E6C7",
+      "unit": "hex"
+    },
+    "primary-dark": {
+      "value": "#056A68",
+      "unit": "hex"
+    },
+    "primary-light": {
+      "value": "#CCEBE9",
+      "unit": "hex"
+    },
+    "grey-warm": {
+      "value": "#F7F7F7",
+      "unit": "hex"
+    },
+    "grey-cold": {
+      "value": "#F8FAFE",
+      "unit": "hex"
+    },
+    "grey-dark": {
+      "value": "#647C99",
+      "unit": "hex"
+    },
+    "grey-darker": {
+      "value": "#3D4C5E",
+      "unit": "hex"
+    },
+    "disabled": {
+      "value": "#DAE0E7",
+      "unit": "hex"
+    },
+    "prime-gold": {
+      "value": "#AB944C",
+      "unit": "hex"
+    },
+    "warning": {
+      "value": "#F7C01A",
+      "unit": "hex"
+    },
+    "error": {
+      "value": "#FF5A5F",
+      "unit": "hex"
+    },
+    "changes": {
+      "value": "#AE1AF7",
+      "unit": "hex"
+    },
+    "helpers-1": {
+      "value": "#FFA45E",
+      "unit": "hex"
+    },
+    "black-light": {
+      "value": "#1D252E",
+      "unit": "hex"
+    },
+    "cta": {
+      "value": "#1137FF",
+      "unit": "hex"
+    },
+    "cta-hover": {
+      "value": "#00269A",
+      "unit": "hex"
+    }
+  }
+}

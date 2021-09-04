@@ -1,75 +1,13 @@
-import { getPrefix } from "@/config/helper/getPrefix";
-import { ComponentNode, ComponentNodeOptions, ComponentStylesParams } from "@/types/format/ComponentFormat";
-import prettier from "prettier";
-import { TransformedToken } from "style-dictionary/types/TransformedToken";
+import { getPrefix } from '@/config/helper/getPrefix';
+import { ComponentNode, ComponentNodeOptions, ComponentStylesParams } from '@/types/format/ComponentFormat';
+import prettier from 'prettier';
+import { TransformedToken } from 'style-dictionary/types/TransformedToken';
+
+import { formatCssStatement, isCssPseudo, tryTransformToCssPseudo } from './format-helpers';
 
 const {
   formattedVariables,
 } = require("style-dictionary/lib/common/formatHelpers");
-
-const getCssProp = (prop: string) => {
-  switch (prop) {
-    case "text-color":
-      return "color";
-    default:
-      return prop;
-  }
-};
-
-const isCssPseudo = (state: string) => {
-  const cssPseudos = ["hover", "focus", "active", "disabled", "visited"];
-  return cssPseudos.includes(state);
-};
-
-const tryTransformToCssPseudo = (state: string) => {
-  switch (state) {
-    case "pressed":
-      return "active";
-    case "focused":
-      return "focus";
-    default:
-      return state;
-  }
-};
-
-const formatVariable = (name: string, { format }: ComponentNodeOptions) => {
-  switch (format) {
-    case "css":
-      return `var(--${name})`;
-    case "scss":
-      return `$${name}`;
-    default:
-      throw new Error(
-        `Variable De format '${format}' is not supported. Available formats are: css, scss`
-      );
-  }
-};
-
-const formatVariableDeclaration = (
-  { name, value }: TransformedToken,
-  { format }: ComponentNodeOptions
-) => {
-  switch (format) {
-    case "css":
-      return `--${name}: ${value};`;
-    case "scss":
-      return `$${name}: ${value};`;
-    default:
-      throw new Error(
-        `Variable declaration format '${format}' is not supported. Available formats are: css, scss`
-      );
-  }
-};
-
-const formatCssStatement = (
-  prop: string,
-  token: TransformedToken,
-  opts: ComponentNodeOptions
-) => {
-  const cssProp = getCssProp(prop);
-
-  return `${cssProp}: ${formatVariable(token.name, opts)};`;
-};
 
 const formatStateNode = (
   state: string,
