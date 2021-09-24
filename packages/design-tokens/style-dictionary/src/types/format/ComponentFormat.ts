@@ -1,24 +1,19 @@
-import { Dictionary, Platform, TransformedToken } from "style-dictionary";
+import { Dictionary, Platform, TransformedToken } from 'style-dictionary';
 
-export type VariableFormat = "css" | "scss";
+import { FormatOptions } from './FormatOptions';
 
-export interface ComponentNodeOptions {
-  format: VariableFormat;
-  outputReferences: boolean;
+interface _ComponentTokens {
+  subcomponent?: ComponentTokens;
+  breakpoint?: ComponentTokens;
+  variant?: ComponentTokens;
+  state?: ComponentTokens;
 }
 
-interface _ComponentNode {
-  subcomponent?: ComponentNode;
-  breakpoint?: ComponentNode;
-  variant?: ComponentNode;
-  state?: ComponentNode;
-}
-
-export type ComponentNode = _ComponentNode & {
+export type ComponentTokens = _ComponentTokens & {
   [key: string]: TransformedToken;
 };
 
-export interface ComponentStylesOptions extends ComponentNodeOptions {
+export interface ComponentStylesOptions extends FormatOptions {
   component: string;
 }
 export interface ComponentStylesParams {

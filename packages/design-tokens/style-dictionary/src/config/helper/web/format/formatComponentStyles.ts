@@ -1,102 +1,63 @@
 import { getPrefix } from '@/config/helper/getPrefix';
-import { ComponentNode, ComponentNodeOptions, ComponentStylesParams } from '@/types/format/ComponentFormat';
+import { ComponentStylesParams, ComponentTokens } from '@/types/format/ComponentFormat';
+import { GacFormatParams } from '@/types/format/GacFormat';
 import prettier from 'prettier';
-import { TransformedToken } from 'style-dictionary/types/TransformedToken';
+import { TransformedToken } from 'style-dictionary';
 
-import { formatCssStatement, isCssPseudo, tryTransformToCssPseudo } from './format-helpers';
+import {
+  formatBreakpointTokens,
+  formatCssStatement,
+  formatStateTokens,
+  formatSubcomponentTokens,
+  formatVariantTokens,
+  tokensToString,
+} from './format-helpers';
 
 const {
   formattedVariables,
 } = require("style-dictionary/lib/common/formatHelpers");
 
-const formatStateNode = (
-  state: string,
-  node: ComponentNode,
-  opts: ComponentNodeOptions
-): string => {
-  const maybePseudo = tryTransformToCssPseudo(state);
-
-  // if not pseudo, treat as variant node => BEM Notation
-  return isCssPseudo(maybePseudo)
-    ? formatPseudoStateNode(maybePseudo, node, opts)
-    : formatVariantNode(state, node, opts);
-};
-
-const formatPseudoStateNode = (
-  state: string,
-  node: ComponentNode,
-  opts: ComponentNodeOptions
-): string => {
-  return `&:${state} {${formatComponentNode(node, opts)}}`;
-};
-
-const formatVariantNode = (
-  variant: string,
-  node: ComponentNode,
-  opts: ComponentNodeOptions
-): string => {
-  return `&--${variant} {${formatComponentNode(node, opts)}}`;
-};
-
-// expects breakpoint (e.g. tablet, desktop) to exist as SCSS-mixin
-const formatBreakpointNode = (
-  breakpoint: string,
-  node: ComponentNode,
-  opts: ComponentNodeOptions
-): string => {
-  return `@include ${breakpoint} {${formatComponentNode(node, opts)}}`;
-};
-
-const formatSubcomponentNode = (
-  subcomponent: string,
-  node: ComponentNode,
-  opts: ComponentNodeOptions
-): string => {
-  return `&__${subcomponent} {${formatComponentNode(node, opts)}}`;
-};
-
-const nodeToString = (
-  node: ComponentNode,
-  formatFn: (
-    entry: [name: string, token: TransformedToken | ComponentNode]
-  ) => string
-) => {
-  return Object.entries(node).map(formatFn).join("");
-};
-
 /**
- * @param node node of a <component>.json, node can be rootNode (e.g. button), variant, state or subcomponent
+ * @param node node of a <component>.json, node can be rootTokens (e.g. button), variant, state or subcomponent
  * @param opts options for e.g. formatting
  * @returns {string} SCSS from node recursively
  */
-export const formatComponentNode = (
-  node: ComponentNode,
-  opts: ComponentNodeOptions = { format: "scss", outputReferences: false }
-) => {
+export const formatComponentTokens = ({
+  tokens,
+  options = { format: "scss", outputReferences: false },
+}: GacFormatParams) => {
   const {
     variant = {},
     state = {},
     subcomponent = {},
     breakpoint = {},
-    ...tokens
-  } = node;
+    ...restTokens
+  } = tokens;
+
+  const params = { callback: formatComponentTokens, options };
 
   return `
 
-      ${Object.entries(tokens)
-        .map(([prop, token]) => formatCssStatement(prop, token, opts))
-        .join("")}
-      ${nodeToString(variant, ([variantName, variantNode]) =>
-        formatVariantNode(variantName, variantNode, opts)
+      ${tokensToString(restTokens, ([prop, token]) =>
+        formatCssStatement(prop, token as TransformedToken, options)
       )}
-      ${nodeToString(state, ([stateName, stateNode]) =>
-        formatStateNode(stateName, stateNode, opts)
+      ${tokensToString(variant, ([variantName, variantTokens]) =>
+        formatVariantTokens(variantName, { tokens: variantTokens, ...params })
       )}
-      ${nodeToString(breakpoint, ([breakpointName, breakpointNode]) =>
-        formatBreakpointNode(breakpointName, breakpointNode, opts)
+      ${tokensToString(state, ([stateName, stateTokens]) =>
+        formatStateTokens(stateName, { tokens: stateTokens, ...params })
       )}
-      ${nodeToString(subcomponent, ([subcomponentName, subcomponentNode]) =>
-        formatSubcomponentNode(subcomponentName, subcomponentNode, opts)
+      ${tokensToString(breakpoint, ([breakpointName, breakpointTokens]) =>
+        formatBreakpointTokens(breakpointName, {
+          tokens: breakpointTokens,
+          ...params,
+        })
+      )}
+      ${tokensToString(subcomponent, ([subcomponentName, subcomponentTokens]) =>
+        formatSubcomponentTokens(subcomponentName, {
+          tokens: subcomponentTokens,
+          ...params,
+        })
       )}
       `;
 };
@@ -112,7 +73,7 @@ export const formatComponentStyles = ({
   options,
 }: ComponentStylesParams) => {
   // parsed <component>.json
-  const rootNode = dictionary.tokens[options.component] as ComponentNode;
+  const rootTokens = dictionary.tokens[options.component] as ComponentTokens;
   const prefix = getPrefix(platform);
 
   const opts = { ...options, format: options.format };
@@ -125,7 +86,7 @@ export const formatComponentStyles = ({
           outputReferences: opts.outputReferences,
         })}
 
-      ${formatComponentNode(rootNode, opts)}
+      ${formatComponentTokens({ tokens: rootTokens, options: opts })}
      }
     `,
     { parser: "scss" }

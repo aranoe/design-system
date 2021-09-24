@@ -1,12 +1,12 @@
-import { MediaQuery } from "@/types/format/MediaQueryFormat";
-import prettier from "prettier";
-import { Dictionary } from "style-dictionary";
+import { MediaQuery } from '@/types/format/MediaQueryFormat';
+import prettier from 'prettier';
+import { Dictionary } from 'style-dictionary';
 
 export const breakpointVariations = "min";
 export const formatMediaQuery = ({ name, token }: MediaQuery) => {
   return `
     @mixin ${name} {
-        @media (min-width: $${token.name}) {
+        @media (min-width: ${token.value}) {
             @content;
         }
     }
@@ -17,8 +17,8 @@ export const formatMediaQueryOnly = ({ name, token, next }: MediaQuery) => {
   if (!next) return "";
   return `
       @mixin ${name}-only {
-          @media (min-width: $${token.name}) 
-             and (max-width: $${next.token.name} - 1) {
+          @media (min-width: ${token.value}) 
+             and (max-width: ${next.token.value} - 1px) {
             @content;
           }
       }
@@ -28,7 +28,7 @@ export const formatMediaQueryAndDown = ({ name, next }: MediaQuery) => {
   if (!next) return "";
   return `
         @mixin ${name}-and-down {
-            @media (max-width: $${next.token.name} - 1) {
+            @media (max-width: ${next.token.value} - 1px) {
               @content;
             }
         }
@@ -46,6 +46,7 @@ export const formatMediaQueryMixins = (dictionary: Dictionary) => {
       if (index !== arr.length - 1) next = arr[index + 1];
       return { name, token, prev, next };
     });
+
   return prettier.format(
     `
       ${mediaQueries.map((query) => formatMediaQuery(query)).join("")}

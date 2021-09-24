@@ -4,7 +4,7 @@ import { filter } from '@/config/extensions/filter';
 import { PlatformConfig } from '@/types/Config';
 import { Platform } from 'style-dictionary/types/Platform';
 
-const variableFormat = "scss"; // "css" | "scss"
+const variableFormat = "css"; // "css" | "scss"
 const outputReferences = true; // if true uses reference of other token instead of raw value
 
 export const web: PlatformConfig = {
@@ -165,7 +165,6 @@ export const web: PlatformConfig = {
   },
 
   scss: ({ brand, prefix }) => {
-    console.log("brand");
     return {
       [PLATFORM.WEB_SCSS]: {
         transformGroup: "tokens-scss",

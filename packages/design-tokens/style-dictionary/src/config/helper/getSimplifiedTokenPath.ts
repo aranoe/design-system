@@ -4,4 +4,4 @@
 const ignorablePaths = ["subcomponent", "breakpoint", "variant", "state"];
 
 export const getSimplifiedTokenPath = (path: string[]) =>
-  path.filter((p) => !ignorablePaths.includes(p));
+  path.filter((p) => !ignorablePaths.includes(p) || path[0] === p);
