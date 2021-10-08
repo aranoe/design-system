@@ -2,12 +2,15 @@ import { FormatOptions } from '@/types/format/FormatOptions';
 import { GacFormatParams } from '@/types/format/GacFormat';
 import { TransformedToken, TransformedTokens } from 'style-dictionary';
 
+import { caseTransformer } from '../../caseTransformer';
+
 export const getCssProp = (prop: string) => {
-  switch (prop) {
+  const kebabProp = caseTransformer.toKebab(prop);
+  switch (kebabProp) {
     case "text-color":
       return "color";
     default:
-      return prop;
+      return kebabProp;
   }
 };
 

@@ -5,9 +5,9 @@ import { Config } from 'style-dictionary';
 export const getConfig = (config: ConfigParams): Config => {
   return {
     source: [
-      `src/tokens/alias/${config.brand}/*.json`,
-      `src/tokens/globals/**/*.json`,
-      `src/tokens/components/${config.platform}/**/*.json`,
+      `src/tokens/alias/${config.brand}/*.ts`,
+      `src/tokens/globals/**/*.ts`,
+      `src/tokens/components/${config.platform}/**/*.ts`,
     ],
     platforms: {
       ...platforms.web.cssScssCategories(config),

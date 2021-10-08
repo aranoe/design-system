@@ -31,9 +31,9 @@ const build = async () => {
       console.log(`\nProcessing: [${platform}] [${brand}]`);
 
       const components = getFileNames(
-        `src/tokens/${platform}/components/**/*.json`
+        `src/tokens/${platform}/components/**/*.ts`
       );
-      const categories = getFileNames("src/tokens/globals/*.json");
+      const categories = getFileNames("src/tokens/globals/*.ts");
 
       const config = getConfig({
         brand,

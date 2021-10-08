@@ -1,7 +1,7 @@
+import { caseTransformer } from '@/config/helper/caseTransformer';
 import { getPrefix } from '@/config/helper/getPrefix';
 import { getSimplifiedTokenPath } from '@/config/helper/getSimplifiedTokenPath';
 import { transformUnitValue } from '@/config/helper/web/transform/transformUnitValue';
-import { constantCase, paramCase } from 'change-case';
 import StyleDictionary from 'style-dictionary';
 
 // https://amzn.github.io/style-dictionary/#/api?id=registertransformgroup
@@ -25,7 +25,9 @@ export const registerTransforms = () => {
       const simplifiedPath = getSimplifiedTokenPath(token.path);
       const prefix = getPrefix(platform);
 
-      return constantCase(prefix + "-" + simplifiedPath.join("-")); // WERK_BUTTON_PRIMARY_HOVER_TEXT_COLOR
+      return caseTransformer.toConstant(
+        prefix + "-" + simplifiedPath.join("-")
+      ); // WERK_BUTTON_PRIMARY_HOVER_TEXT_COLOR
     },
   });
 
@@ -36,8 +38,7 @@ export const registerTransforms = () => {
       const simplifiedPath = getSimplifiedTokenPath(token.path);
       const prefix = getPrefix(platform);
 
-      // somehow kebab-case is called param-case
-      return paramCase(prefix + "-" + simplifiedPath.join("-")).toLowerCase(); // werk-button-primary-hover-text-color
+      return caseTransformer.toKebab(prefix + "-" + simplifiedPath.join("-"));
     },
   });
 

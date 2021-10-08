@@ -50,21 +50,21 @@ const formatSpacingUtilities = (dictionary: Dictionary) => {
     filter.category("spacing")(token)
   );
   const spacingUtilities = [
-    { prefix: "p-all", statements: ["padding"] },
-    { prefix: "p-t", statements: ["padding-top"] },
-    { prefix: "p-r", statements: ["padding-right"] },
-    { prefix: "p-b", statements: ["padding-bottom"] },
-    { prefix: "p-l", statements: ["padding-left"] },
-    { prefix: "p-x", statements: ["padding-left", "padding-right"] },
-    { prefix: "p-y", statements: ["padding-top", "padding-bottom"] },
+    { prefix: "p", statements: ["padding"] },
+    { prefix: "pt", statements: ["padding-top"] },
+    { prefix: "pr", statements: ["padding-right"] },
+    { prefix: "pb", statements: ["padding-bottom"] },
+    { prefix: "pl", statements: ["padding-left"] },
+    { prefix: "px", statements: ["padding-left", "padding-right"] },
+    { prefix: "py", statements: ["padding-top", "padding-bottom"] },
 
-    { prefix: "m-all", statements: ["margin"] },
-    { prefix: "m-t", statements: ["margin-top"] },
-    { prefix: "m-r", statements: ["margin-right"] },
-    { prefix: "m-b", statements: ["margin-bottom"] },
-    { prefix: "m-l", statements: ["margin-left"] },
-    { prefix: "m-x", statements: ["margin-left", "margin-right"] },
-    { prefix: "m-y", statements: ["margin-top", "margin-bottom"] },
+    { prefix: "m", statements: ["margin"] },
+    { prefix: "mt", statements: ["margin-top"] },
+    { prefix: "mr", statements: ["margin-right"] },
+    { prefix: "mb", statements: ["margin-bottom"] },
+    { prefix: "ml", statements: ["margin-left"] },
+    { prefix: "mx", statements: ["margin-left", "margin-right"] },
+    { prefix: "my", statements: ["margin-top", "margin-bottom"] },
   ];
 
   return spacingTokens
