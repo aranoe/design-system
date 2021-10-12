@@ -1,6 +1,6 @@
-import { getPrefix } from '@/config/helper/getPrefix';
 import { ComponentStylesParams, ComponentTokens } from '@/types/format/ComponentFormat';
 import { GacFormatParams } from '@/types/format/GacFormat';
+import { DESIGN_SYSTEM_CONFIG } from '@design-system/config';
 import prettier from 'prettier';
 import { TransformedToken } from 'style-dictionary';
 
@@ -74,7 +74,7 @@ export const formatComponentStyles = ({
 }: ComponentStylesParams) => {
   // parsed <component>.json
   const rootTokens = dictionary.tokens[options.component] as ComponentTokens;
-  const prefix = getPrefix(platform);
+  const prefix = DESIGN_SYSTEM_CONFIG.PREFIX;
 
   const opts = { ...options, format: options.format };
   return prettier.format(

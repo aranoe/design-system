@@ -20,7 +20,7 @@ export const typography = {
       comment: "Remove when vuetify global style is removed",
     },
   },
-  subtitleHero: {
+  heroSubtitle: {
     fontSize: { value: "{fontSize.22.value}" },
     textColor: { value: "{color.greyMain.value}" },
     lineHeight: { value: 26, unit: "px" },
@@ -30,7 +30,7 @@ export const typography = {
       comment: "Remove when vuetify global style is removed",
     },
   },
-  h1: {
+  headlineH1: {
     fontSize: { value: "{fontSize.24.value}" },
     textColor: { value: "{color.greyDark.value}" },
     fontWeight: { value: "{fontWeight.semiBold.value}" },
@@ -41,7 +41,7 @@ export const typography = {
       comment: "Remove when vuetify global style is removed",
     },
   },
-  subtitleH1: {
+  headlineSubtitleH1: {
     fontSize: { value: "{fontSize.18.value}" },
     textColor: { value: "{color.greyMain.value}" },
     lineHeight: { value: 22, unit: "px" },
@@ -51,7 +51,7 @@ export const typography = {
       comment: "Remove when vuetify global style is removed",
     },
   },
-  h2: {
+  headlineH2: {
     fontSize: { value: "{fontSize.20.value}" },
     textColor: { value: "{color.greyDark.value}" },
     fontWeight: { value: "{fontWeight.semiBold.value}" },
@@ -62,7 +62,7 @@ export const typography = {
       comment: "Remove when vuetify global style is removed",
     },
   },
-  h3: {
+  headlineH3: {
     fontSize: { value: "{fontSize.16.value}" },
     textColor: { value: "{color.greyDark.value}" },
     fontWeight: { value: "{fontWeight.semiBold.value}" },
@@ -73,9 +73,9 @@ export const typography = {
       comment: "Remove when vuetify global style is removed",
     },
   },
-  subtitleH2H3: {
+  headlineSubtitleH2H3: {
     fontSize: { value: "{fontSize.16.value}" },
-    textColor: { value: "{color.greyDark.value}" },
+    textColor: { value: "{color.greyMain.value}" },
     lineHeight: { value: 22, unit: "px" },
     marginBottom: {
       value: 0,
@@ -96,8 +96,19 @@ export const typography = {
   bodyTextUnderline: {
     fontSize: { value: "{fontSize.16.value}" },
     textColor: { value: "{color.greyDark.value}" },
-    lineHeight: { value: 20, unit: "px" },
+    lineHeight: { value: 22, unit: "px" },
     textDecoration: { value: "underline" },
+    marginBottom: {
+      value: 0,
+      unit: "px",
+      comment: "Remove when vuetify global style is removed",
+    },
+  },
+  bodyTextItalic: {
+    fontSize: { value: "{fontSize.16.value}" },
+    textColor: { value: "{color.greyDark.value}" },
+    lineHeight: { value: 22, unit: "px" },
+    fontStyle: { value: "italic" },
     marginBottom: {
       value: 0,
       unit: "px",
@@ -108,6 +119,17 @@ export const typography = {
     fontSize: { value: "{fontSize.14.value}" },
     textColor: { value: "{color.greyMain.value}" },
     lineHeight: { value: 20, unit: "px" },
+    marginBottom: {
+      value: 0,
+      unit: "px",
+      comment: "Remove when vuetify global style is removed",
+    },
+  },
+  captionUnderline: {
+    fontSize: { value: "{fontSize.14.value}" },
+    textColor: { value: "{color.greyMain.value}" },
+    lineHeight: { value: 20, unit: "px" },
+    textDecoration: { value: "underline" },
     marginBottom: {
       value: 0,
       unit: "px",
@@ -125,30 +147,64 @@ export const typography = {
       comment: "Remove when vuetify global style is removed",
     },
   },
-  captionSmall: {
-    fontSize: { value: "{fontSize.12.value}" },
-    textColor: { value: "{color.greyDark.value}" },
-    lineHeight: { value: 18, unit: "px" },
-    marginBottom: {
-      value: 0,
-      unit: "px",
-      comment: "Remove when vuetify global style is removed",
-    },
-  },
-  prime: {
-    fontSize: { value: "{fontSize.12.value}" },
-    textColor: { value: "{color.primeGold.value}" },
-    lineHeight: { value: 18, unit: "px" },
-    marginBottom: {
-      value: 0,
-      unit: "px",
-      comment: "Remove when vuetify global style is removed",
-    },
-  },
-  captionLabel: {
+  label: {
     fontSize: { value: "{fontSize.12.value}" },
     textColor: { value: "{color.greyMain.value}" },
     lineHeight: { value: 18, unit: "px" },
+    marginBottom: {
+      value: 0,
+      unit: "px",
+      comment: "Remove when vuetify global style is removed",
+    },
+  },
+  labelUnderline: {
+    fontSize: { value: "{fontSize.12.value}" },
+    textColor: { value: "{color.greyMain.value}" },
+    lineHeight: { value: 18, unit: "px" },
+    textDecoration: { value: "underline" },
+
+    marginBottom: {
+      value: 0,
+      unit: "px",
+      comment: "Remove when vuetify global style is removed",
+    },
+  },
+  labelItalic: {
+    fontSize: { value: "{fontSize.12.value}" },
+    textColor: { value: "{color.greyMain.value}" },
+    lineHeight: { value: 18, unit: "px" },
+    fontStyle: { value: "italic" },
+    marginBottom: {
+      value: 0,
+      unit: "px",
+      comment: "Remove when vuetify global style is removed",
+    },
+  },
+  buttonCta: {
+    fontSize: { value: "{fontSize.18.value}" },
+    textColor: { value: "{color.white.value}" },
+    lineHeight: { value: 24, unit: "px" },
+    marginBottom: {
+      value: 0,
+      unit: "px",
+      comment: "Remove when vuetify global style is removed",
+    },
+  },
+  buttonCtaUnderline: {
+    fontSize: { value: "{fontSize.18.value}" },
+    textColor: { value: "{color.greyMain.value}" },
+    lineHeight: { value: 24, unit: "px" },
+    textDecoration: { value: "underline" },
+    marginBottom: {
+      value: 0,
+      unit: "px",
+      comment: "Remove when vuetify global style is removed",
+    },
+  },
+  button: {
+    fontSize: { value: "{fontSize.16.value}" },
+    textColor: { value: "{color.greyMain.value}" },
+    lineHeight: { value: 22, unit: "px" },
     marginBottom: {
       value: 0,
       unit: "px",
@@ -166,21 +222,21 @@ export const typography = {
       comment: "Remove when vuetify global style is removed",
     },
   },
-  ctaButtonUnderline: {
-    fontSize: { value: "{fontSize.18.value}" },
+  buttonSmall: {
+    fontSize: { value: "{fontSize.14.value}" },
     textColor: { value: "{color.greyMain.value}" },
-    lineHeight: { value: 24, unit: "px" },
-    textDecoration: { value: "underline" },
+    lineHeight: { value: 20, unit: "px" },
     marginBottom: {
       value: 0,
       unit: "px",
       comment: "Remove when vuetify global style is removed",
     },
   },
-  ctaButton: {
-    fontSize: { value: "{fontSize.18.value}" },
-    textColor: { value: "{color.white.value}" },
-    lineHeight: { value: 24, unit: "px" },
+  buttonSmallUnderline: {
+    fontSize: { value: "{fontSize.14.value}" },
+    textColor: { value: "{color.greyMain.value}" },
+    lineHeight: { value: 20, unit: "px" },
+    textDecoration: { value: "underline" },
     marginBottom: {
       value: 0,
       unit: "px",
@@ -190,9 +246,8 @@ export const typography = {
   breakpoint: {
     desktop: {
       hero: {
-        fontSize: { value: "{fontSize.32.value}" },
-        textColor: { value: "{color.greyDark.value}" },
-        lineHeight: { value: 39, unit: "px" },
+        fontSize: { value: "{fontSize.44.value}" },
+        lineHeight: { value: 53, unit: "px" },
       },
     },
   },

@@ -1,7 +1,7 @@
 import { caseTransformer } from '@/config/helper/caseTransformer';
-import { getPrefix } from '@/config/helper/getPrefix';
 import { getSimplifiedTokenPath } from '@/config/helper/getSimplifiedTokenPath';
 import { transformUnitValue } from '@/config/helper/web/transform/transformUnitValue';
+import { DESIGN_SYSTEM_CONFIG } from '@design-system/config';
 import StyleDictionary from 'style-dictionary';
 
 // https://amzn.github.io/style-dictionary/#/api?id=registertransformgroup
@@ -23,10 +23,9 @@ export const registerTransforms = () => {
     type: "name", // options: "attribute", "name", "value"
     transformer: (token, platform) => {
       const simplifiedPath = getSimplifiedTokenPath(token.path);
-      const prefix = getPrefix(platform);
 
       return caseTransformer.toConstant(
-        prefix + "-" + simplifiedPath.join("-")
+        DESIGN_SYSTEM_CONFIG.PREFIX + "-" + simplifiedPath.join("-")
       ); // WERK_BUTTON_PRIMARY_HOVER_TEXT_COLOR
     },
   });
@@ -36,9 +35,10 @@ export const registerTransforms = () => {
     type: "name",
     transformer: (token, platform) => {
       const simplifiedPath = getSimplifiedTokenPath(token.path);
-      const prefix = getPrefix(platform);
 
-      return caseTransformer.toKebab(prefix + "-" + simplifiedPath.join("-"));
+      return caseTransformer.toKebab(
+        DESIGN_SYSTEM_CONFIG.PREFIX + "-" + simplifiedPath.join("-")
+      );
     },
   });
 

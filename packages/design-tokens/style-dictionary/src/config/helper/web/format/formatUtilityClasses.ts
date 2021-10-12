@@ -1,19 +1,21 @@
 import { filter } from '@/config/extensions/filter';
 import { GacFormatParams } from '@/types/format/GacFormat';
+import { DESIGN_SYSTEM_CONFIG } from '@design-system/config';
 import prettier from 'prettier';
 import { Dictionary } from 'style-dictionary';
 import { TransformedToken } from 'style-dictionary/types/TransformedToken';
 
+import { caseTransformer } from '../../caseTransformer';
 import { formatBreakpointTokens, formatCssClass, formatCssStatement, tokensToString } from './format-helpers';
 
 const formatTypographyClasses = ({ tokens, options }: GacFormatParams) => {
   const { breakpoint, ...restTokens } = tokens;
-  const prefix = "ty";
+  const prefix = `${DESIGN_SYSTEM_CONFIG.PREFIX}-ty`;
   const params = { callback: formatTypographyClasses, options };
   return `
   ${tokensToString(restTokens, ([tyName, tyTokens]) =>
     formatCssClass(
-      `${prefix}-` + tyName,
+      caseTransformer.toKebab(`${prefix}-` + tyName),
       tokensToString(tyTokens, ([prop, token]) =>
         formatCssStatement(prop, token as TransformedToken, options)
       )
