@@ -1,6 +1,5 @@
-import { web } from "@/config/extensions/platforms/web";
-import { PlatformConfig } from "@/types/Config";
+import { web } from '@/config/extensions/platforms/web';
 
-export const platforms: { [key: string]: PlatformConfig } = {
+export const platforms = {
   web,
 };

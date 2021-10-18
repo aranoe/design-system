@@ -1,24 +1,28 @@
 import { platforms } from '@/config/extensions/platforms';
-import { ConfigParams } from '@/types/Config';
-import { Config } from 'style-dictionary';
+import { ConfigParams, PlatformConfig } from '@/types/Config';
+import { Config, Platform } from 'style-dictionary';
 
 export const getConfig = (config: ConfigParams): Config => {
+  const getPlatforms = (platformConfig: PlatformConfig) => {
+    return Object.entries(platformConfig).reduce(
+      (platforms, [currentPlatform, getPlatform]) => {
+        platforms[currentPlatform] = getPlatform(config);
+        return platforms;
+      },
+      {} as Record<string, Platform>
+    );
+  };
+
   return {
     source: [
       `src/tokens/alias/${config.brand}/*.ts`,
       `src/tokens/globals/**/*.ts`,
       `src/tokens/components/${config.platform}/**/*.ts`,
     ],
+    // register all platforms: web -> future ios, android ...
     platforms: {
-      ...platforms.web.cssScssCategories(config),
-      ...platforms.web.cssScssComponents(config),
-      ...platforms.web.css(config),
-      ...platforms.web.scss(config),
-      ...platforms.web.js(config),
-      ...platforms.web.json(config),
-      ...platforms.web.styleguide(config),
-      ...platforms.web.mediaQueryMixins(config),
-      ...platforms.web.utilities(config),
-    } as any, // TODO: Define type, StyleDictionary doesn't provide types for all use cases
+      ...getPlatforms(platforms.web),
+      // StyleDictionary doesn't provide types for all use cases
+    } as Record<string, Platform>,
   };
 };
