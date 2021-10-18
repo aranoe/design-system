@@ -4,13 +4,15 @@ import { Config, Platform } from 'style-dictionary';
 
 export const getConfig = (config: ConfigParams): Config => {
   const getPlatforms = (platformConfig: PlatformConfig) => {
-    return Object.entries(platformConfig).reduce(
-      (platforms, [currentPlatform, getPlatform]) => {
-        platforms[currentPlatform] = getPlatform(config);
-        return platforms;
+    const x = Object.entries(platformConfig).reduce(
+      (_platforms, [currentPlatform, getPlatform]) => {
+        _platforms[currentPlatform] = getPlatform(config);
+        return _platforms;
       },
       {} as Record<string, Platform>
     );
+
+    return x;
   };
 
   return {
